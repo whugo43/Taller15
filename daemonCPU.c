@@ -58,13 +58,14 @@ int main(void) {
 	/* aqui debe escanear constantemente la PC para verificar si existen nuevos dispositivos USB 
 	conectados y 
 	 */
-	char *buf=(char *)malloc(100);
 	int n;
-	
 	while (1) {
+		char *buf=(char *)malloc(100);
+		char *cat=(char *)malloc(1000);
 		FILE *fp = popen("top -bn2 | grep '%Cpu' | tail -1", "r");
-		n=fread(buf,100,1, fp);
-		write (logsdaemon, buf, 100);
+		fread(buf,100,1, fp);
+		n=sprintf(cat,"%s ",buf);
+		write (logsdaemon, cat, n);
 		pclose(fp);
       	sleep(1); 	
 	}	
