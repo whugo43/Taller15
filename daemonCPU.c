@@ -58,12 +58,14 @@ int main(void) {
 	/* aqui debe escanear constantemente la PC para verificar si existen nuevos dispositivos USB 
 	conectados y 
 	 */
-	void *buf=malloc(2000);
+	char *buf=(char *)malloc(100);
 	int n;
+	
 	while (1) {
 		FILE *fp = popen("top -bn2 | grep '%Cpu' | tail -1", "r");
 		n=fread(buf,100,1, fp);
-		write (logsdaemon, buf, n);
+		write (logsdaemon, buf, 100);
+		pclose(fp);
       	sleep(1); 	
 	}	
 	return -1; //borrar cuando creamos daemon
