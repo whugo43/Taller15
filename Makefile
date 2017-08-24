@@ -1,7 +1,5 @@
-INCLUDE=-Iinclude/
-LIBS=-Llib/
-rocesodaemon: 
+procesodaemon: 
 	gcc -Wall  daemonCPU.c -o programa
-	.PHONY: clean
+.PHONY: clean
 clean:
-rm -rf obj/* bin/* lib/*
+	rm -rf obj/* bin/* lib/*

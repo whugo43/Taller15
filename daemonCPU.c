@@ -9,7 +9,7 @@
 #include <libudev.h>
 #include <stdio.h>
 #include <mntent.h>
-#include "Monitor.h"
+
 
 int main(void) {
 	
@@ -59,6 +59,7 @@ int main(void) {
 	conectados y 
 	 */
 	void *buf=malloc(2000);
+	int n;
 	while (1) {
 		FILE *fp = popen("top -bn2 | grep '%Cpu' | tail -1", "r");
 		n=fread(buf,100,1, fp);
